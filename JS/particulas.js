@@ -1,0 +1,251 @@
+// Canvas setup
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+let width = (canvas.width = window.innerWidth);
+let height = (canvas.height = window.innerHeight);
+
+// Particle system variables
+let particles = [];
+let targetParticleCount = 80;
+let connectionDistance = 120;
+let mouse = { x: null, y: null, radius: 150 };
+let ripples = [];
+let particlesToRemove = 0;
+
+// Particle class
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 2 - 1;
+    this.speedY = Math.random() * 2 - 1;
+    this.color = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`;
+    this.opacity = 0; // Start with 0 opacity for fade-in effect
+    this.targetOpacity = 1;
+    this.fadingOut = false;
+  }
+
+  update() {
+    // Move particle
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // Bounce off edges
+    if (this.x < 0 || this.x > width) this.speedX *= -1;
+    if (this.y < 0 || this.y > height) this.speedY *= -1;
+
+    // Mouse interaction
+    if (mouse.x != null && mouse.y != null) {
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < mouse.radius) {
+        // Repel particles from mouse
+        const force = (mouse.radius - distance) / mouse.radius;
+        const angle = Math.atan2(dy, dx);
+        const moveX = Math.cos(angle) * force * 5;
+        const moveY = Math.sin(angle) * force * 5;
+
+        this.x -= moveX;
+        this.y -= moveY;
+      }
+    }
+
+    // Handle opacity transitions
+    if (this.opacity < this.targetOpacity) {
+      this.opacity += 0.02;
+    } else if (this.opacity > this.targetOpacity) {
+      this.opacity -= 0.02;
+    }
+  }
+
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.opacity;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1; // Reset alpha
+  }
+
+  // Method to start fading out the particle
+  startFadeOut() {
+    this.targetOpacity = 0;
+    this.fadingOut = true;
+  }
+
+  // Check if particle is completely faded out
+  isFadedOut() {
+    return this.fadingOut && this.opacity <= 0;
+  }
+}
+
+// Ripple class for click effects
+class Ripple {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = 0;
+    this.maxSize = 100;
+    this.speed = 3;
+    this.opacity = 0.7;
+  }
+
+  update() {
+    this.size += this.speed;
+    this.opacity -= 0.01;
+
+    if (this.opacity <= 0) {
+      this.opacity = 0;
+    }
+  }
+
+  draw() {
+    ctx.strokeStyle = `rgba(79, 172, 254, ${this.opacity})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+}
+
+// Initialize particles
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < targetParticleCount; i++) {
+    particles.push(new Particle());
+  }
+}
+
+// Connect particles with lines
+function connectParticles() {
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
+      const dx = particles[a].x - particles[b].x;
+      const dy = particles[a].y - particles[b].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < connectionDistance) {
+        const opacity = 1 - distance / connectionDistance;
+        ctx.strokeStyle = `rgba(79, 172, 254, ${opacity})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// Animation loop
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  // Handle particle count adjustments
+  if (particles.length < targetParticleCount) {
+    // Add a new particle
+    particles.push(new Particle());
+  } else if (particles.length > targetParticleCount) {
+    // Start fading out particles to remove
+    if (particlesToRemove === 0) {
+      particlesToRemove = particles.length - targetParticleCount;
+    }
+
+    // Mark particles for removal (up to 3 per frame)
+    let marked = 0;
+    for (
+      let i = 0;
+      i < particles.length && marked < 3 && particlesToRemove > 0;
+      i++
+    ) {
+      if (!particles[i].fadingOut) {
+        particles[i].startFadeOut();
+        marked++;
+        particlesToRemove--;
+      }
+    }
+  }
+
+  // Remove particles that have completely faded out
+  for (let i = particles.length - 1; i >= 0; i--) {
+    if (particles[i].isFadedOut()) {
+      particles.splice(i, 1);
+    }
+  }
+
+  // Update and draw particles
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+  }
+
+  // Connect particles
+  connectParticles();
+
+  // Update and draw ripples
+  for (let i = 0; i < ripples.length; i++) {
+    ripples[i].update();
+    ripples[i].draw();
+
+    // Remove faded ripples
+    if (ripples[i].opacity <= 0) {
+      ripples.splice(i, 1);
+      i--;
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+// Event listeners
+window.addEventListener("resize", () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+  initParticles();
+});
+
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+window.addEventListener("mouseout", () => {
+  mouse.x = null;
+  mouse.y = null;
+});
+
+window.addEventListener("click", (e) => {
+  ripples.push(new Ripple(e.x, e.y));
+});
+
+// Control panel
+const particleCountSlider = document.getElementById("particleCount");
+const particleCountValue = document.getElementById("particleCountValue");
+const connectionDistanceSlider = document.getElementById("connectionDistance");
+const connectionDistanceValue = document.getElementById(
+  "connectionDistanceValue"
+);
+
+particleCountSlider.addEventListener("input", (e) => {
+  targetParticleCount = parseInt(e.target.value);
+  particleCountValue.textContent = targetParticleCount;
+
+  // Reset particlesToRemove when target changes
+  if (particles.length > targetParticleCount) {
+    particlesToRemove = particles.length - targetParticleCount;
+  } else {
+    particlesToRemove = 0;
+  }
+});
+
+connectionDistanceSlider.addEventListener("input", (e) => {
+  connectionDistance = parseInt(e.target.value);
+  connectionDistanceValue.textContent = connectionDistance;
+});
+
+// Initialize and start animation
+initParticles();
+animate();

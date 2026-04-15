@@ -1,0 +1,45 @@
+.cabecalho{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: aqua;
+}
+
+.foto{
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foto-perfil{
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    /* box shadow generation = cssmatic.com */
+    border-radius: 50%;
+    animation: flutuar 5s ease-in-out infinite;
+}
+/* @media (max-width: 768px) {
+    .foto-perfil {
+        font-size: 0.8rem;
+    }
+} */
+
+h1{
+    font-size: 3.5rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 20px;
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+.cabecalho-sub-titulo{
+    font-size: 1.5rem;
+    color: var(--primary-white);
+}

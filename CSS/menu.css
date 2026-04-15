@@ -1,0 +1,72 @@
+.navegacao{
+    display: flex;
+    position: fixed;
+    top: 0;
+    justify-content: center;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5rem;
+    /* background-color: aqua; */
+/* OBS: é o pai que centraliza o filho */
+}
+.fundo-menu{
+    display: flex;
+    top: 0;
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.2);
+    width: 50%;
+    height: 8vh;
+    border-radius: 12px;
+    z-index: 100;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .fundo-menu {
+        width: 90%; /* 👈 ocupa mais espaço no celular */
+    }
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    gap: 4rem;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .menu {
+        gap: 2rem;
+    }
+}
+.menu-link{
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--primary-white);
+    font-weight: 600;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .menu-link {
+        font-size: 0.5rem;
+    }
+}
+
+/* after -> depois | before -> antes */
+.menu-link::after {
+    content: '';
+    height: 2px;
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    transition: width 0.5s ease;
+}
+
+.menu-link:hover::after{
+    width: 100%;
+}

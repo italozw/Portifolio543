@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italo | Portifólio</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="JS/particulas.js" defer></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="controls">
+        <h3>Particle Controls</h3>
+        <div class="control-group">
+            <label for="particleCount">Particulas</label>
+            <input type="range" id="particleCount" min="30" max="200" value="80">
+            <div class="value-display" id="particleCountValue">80</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="connectionDistance">Distancia de conexão</label>
+            <input type="range" id="connectionDistance" min="50" max="200" value="120">
+            <div class="value-display" id="connectionDistanceValue">120</div>
+            <p class="creator">Criado por Italo Luan de Almeida;</p>
+        </div>
+    </div>
+    <div class="particulas"></div>
+
+    <header>
+        <nav class="navegacao">
+            <div class="fundo-menu">
+                <ul class="menu">
+                    <li>
+                        <a href="#inicio" class="menu-link">Início</a>
+                    </li>
+                    <li>
+                        <a href="#sobre" class="menu-link">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="#habilidades" class="menu-link">habilidades</a>
+                    </li>
+                    <li>
+                        <a href="#projetos" class="menu-link">Projetos</a>
+                    </li>
+                    <li>
+                        <a href="#contato" class="menu-link">Contato</a>
+                    </li>
+                    <li>
+                        <button class="botao"><i class="fa-solid fa-gear"></i></button>
+                    </li>
+                </ul>
+            </div>
+         </nav>
+
+    </header>
+    
+    <main id="inicio" class="cabecalho">
+        <!-- <img src="IMG/Ftoto-perfil.jpg" alt="foto_perfil" class="foto-perfil"> -->
+        <h1>Italo Luan de Almeida</h1>
+        <p class="cabecalho-sub-titulo">Desenvolvedor Full Stack</p>
+    </main>
+
+    <section id="foto" class="foto">
+        <img src="IMG/Ftoto-perfil.jpg" alt="foto_perfil" class="foto-perfil">
+    </section>
+    
+    <section id="sobre" class="sobre">
+        <h2 class="sobre-titulo">Sobre Mim</h2>
+        <div class="sobre-caixa">
+            <p class="sobre-paragrafo">
+                Sou Estudante de Engenharia de Software - Unigran Capital | Estudante em Tecnico em Desenvolvimento de Sistemas - Senac Hub MS
+            </p>
+        </div>
+    </section>
+
+    <!-- <section id="habilidades" class="habilidades">
+        <h2 class="sobre-titulo">Habilidades</h2>
+        <div class="caixa-habilidades">
+            <a href="" class="icon-habilidades"><i class="fa-brands fa-html5"></i></a>
+            <p class="sobre-habilidades">
+                HTML
+            </p>
+        </div> -->
+
+    </section>
+
+    <section id="projetos" class="projetos">
+        <h2 class="meus-projetos"> Meus Projetos</h2>
+        <div class="projetos-caixa">
+
+            <div class="projetos-card">
+                <img src="./IMG/Hamburger_site.png" alt="Projeto 1" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Site Hamburgueria</h3>
+                    <p class="paragrafo-projetos">Site estilo Ecommerce de Hamburgueria gourmet</p>
+                </div>
+            </div>
+
+            <!-- <div class="projetos-card">
+                <img src="./IMG/Mobile_ComprasKaio.png" alt="Projeto 2" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Sistema de Compras Kaio</h3>
+                    <p class="paragrafo-projetos">Sistema Mobile de compras de supermercado e hortifrúti</p>
+                </div>
+            </div> -->
+
+            <div class="projetos-card">
+                <img src="./IMG/ParktecCG.png" alt="Projeto 3" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Sistema da ParktecCG</h3>
+                    <p class="paragrafo-projetos">Sistema Web para Gerenciamento de Startups e Mentores</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./IMG/Sushi_site.png" alt="Projeto 4" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Site Sushi</h3>
+                    <p class="paragrafo-projetos">Site estilo Ecommerce de Sushi e culinária oriental</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contato" class="contatos">
+        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <form  class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
+            <div class="grupo-form">
+                <input placeholder="Nome" class="campo-form" id="nome">
+            </div>
+            <div class="grupo-form">
+                <textarea class="campo-form" placeholder="Digite sua Mensagem" rows="6" id="mensagem"></textarea>
+            </div>
+
+            <button type="submit" class="botao-form">Enviar Whatsapp</button>
+        </form>
+    </section>
+
+    <div class="rodape">
+        <ul class="icon-rodape">
+            <a href="https://www.linkedin.com/in/italo-almeida-966b42354/" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/it_1luan/" class="icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/italozw" class="icon"><i class="fa-brands fa-github"></i></a>
+        </ul>
+    </div>
+
+    <script>
+        function enviarWhats(event){
+            event.preventDefault()
+
+            const nome = document.getElementById('nome').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const telefone = '5567999435703';
+
+            const texto = `Olá Me chamo ${nome}, ${mensagem}`
+            const msgFormatada = encodeURIComponent(texto)
+
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`
+
+            console.log(url)
+
+            window.open(url, '_blank')
+
+        }
+
+    </script>
+
+</body>
+</html>

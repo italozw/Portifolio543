@@ -1,0 +1,84 @@
+
+.creator{
+    color: #a0a0c0;
+}
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(20, 20, 40, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 220px;
+}
+
+.controls h3 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  text-align: center;
+  color: #4facfe;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.controls label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: #a0a0c0;
+  font-weight: 500;
+}
+
+.controls input[type="range"] {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.controls input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.value-display {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #4facfe;
+  margin-top: 5px;
+}
