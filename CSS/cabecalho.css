@@ -1,14 +1,24 @@
 .cabecalho{
-    min-height: 100vh;
+    position: relative;
+    top: 100px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* background-color: aqua; */
+    /* background-color: rgb(204, 255, 0); */
+}
+@media (max-width: 768px) {
+    .cabecalho {
+        top: 100px;
+        height: 400px;
+    }
 }
 
 .foto{
-    min-height: 75vh;
+    /* background-color: beige; */
+    padding-top: 150px;
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +30,12 @@
     /* box shadow generation = cssmatic.com */
     border-radius: 50%;
     animation: flutuar 5s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+    .foto-perfil{
+        width: 50%;
+        height: 50%;
+    }
 }
 
 h1{

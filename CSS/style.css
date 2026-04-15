@@ -24,8 +24,12 @@ html{
 }
 
 body{
+    display: flex;
+    flex-direction: column;
     background-color: var(--primary-black);
     color: var(--primary-white);
+    height: 100%;
+    
 }
 
 .sobre{
