@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .foto{
@@ -21,11 +21,6 @@
     border-radius: 50%;
     animation: flutuar 5s ease-in-out infinite;
 }
-/* @media (max-width: 768px) {
-    .foto-perfil {
-        font-size: 0.8rem;
-    }
-} */
 
 h1{
     font-size: 3.5rem;
