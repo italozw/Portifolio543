@@ -17,6 +17,9 @@
     display: flex;
     justify-content: space-around;
     padding-top: 80px;
+    flex-wrap: wrap;
+    gap: 60px;
+    /* background-color: aqua; */
 }
 
 .habilidade{
@@ -27,8 +30,8 @@
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--primary-glass);
-    width: 125px;
-    min-height: 140px;
+    height: 130px;
+    width: 120px;
     border-radius: 16px;
     padding: 20px;
     font-size: 1rem;
@@ -36,7 +39,7 @@
     backdrop-filter: blur(5px);
     cursor: pointer;
     transform: translateY(-10px) scale(1.03);
-    gap: 10px;
+    gap: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -52,4 +55,14 @@
 .color-span{
     color: rgb(255, 255, 255);
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .habilidade {
+        font-size: 0.9rem
+    }
+    .habilidade i {
+    font-size: 1.6rem;
+    color: var(--cor);
+}
 }

@@ -1,39 +1,18 @@
 .cabecalho{
     position: relative;
     top: 100px;
-    height: 600px;
+    width: 100%;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* background-color: rgb(204, 255, 0); */
 }
 @media (max-width: 768px) {
     .cabecalho {
+        position: relative;
         top: 100px;
-        height: 400px;
-    }
-}
-
-.foto{
-    padding-top: 150px;
-    min-height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.foto-perfil{
-    width: 30%;
-    height: 30%;
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-    /* box shadow generation = cssmatic.com */
-    border-radius: 50%;
-    animation: flutuar 5s ease-in-out infinite;
-}
-@media (max-width: 768px) {
-    .foto-perfil{
-        width: 50%;
-        height: 50%;
+        min-height: 60vh;
     }
 }
 
@@ -46,8 +25,36 @@ h1{
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
+        justify-content: center;
     }
 }
+.foto{
+    padding-top: 150px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .cabecalho {
+        top: 100px;
+        height: 600px;
+    }
+}
+.foto-perfil{
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    border-radius: 50%;
+    animation: flutuar 5s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+    .foto-perfil{
+        width: 50%;
+        height: 50%;
+    }
+}
+
 
 .cabecalho-sub-titulo{
     font-size: 2.5rem;
