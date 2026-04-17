@@ -1,0 +1,81 @@
+.formacao-academica {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.sobre-titulo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-formacao {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding-top: 40px;
+
+}
+
+.formacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-glass);
+    width: 100%;
+    min-height: 60px;
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 1rem;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.curso {
+    text-align: left;
+}
+
+.instituicao {
+    text-align: center;
+}
+
+.status {
+    text-align: right;
+}
+
+.formacao:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .card-formacao {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .formacao {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .formacao {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .curso,
+    .instituicao,
+    .status {
+        text-align: center;
+    }
+}

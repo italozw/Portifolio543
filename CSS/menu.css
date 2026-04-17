@@ -6,8 +6,6 @@
     width: 100%;
     z-index: 100;
     padding: 1.5rem;
-    /* background-color: aqua; */
-/* OBS: é o pai que centraliza o filho */
 }
 .fundo-menu{
     display: flex;
@@ -22,14 +20,14 @@
     padding: 0.5rem;
     justify-content: center;
     align-items: center;
-    
 }
-@media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .fundo-menu {
         width: 100%;
         height: 5vh;
     }
-}
+} */
 
 .menu{
     display: flex;
@@ -37,11 +35,7 @@
     width: 100%;
     justify-content: space-around;
 }
-/* @media (max-width: 768px) {
-    .menu {
-        gap: 1.3rem;
-    }
-} */
+
 .menu-link{
     font-size: 1rem;
     text-decoration: none;
@@ -50,13 +44,12 @@
     position: relative;
     padding: 0.5rem 0rem;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .menu-link {
         font-size: 0.9rem;
     }
-}
+} */
 
-/* after -> depois | before -> antes */
 .menu-link::after {
     content: '';
     height: 2px;
@@ -85,11 +78,11 @@ button {
   margin: none;
   box-shadow: -5px 0 8px rgba(79, 70, 229, 0.5);
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .bordinha {
         height: 5vh;
     }
-}
+} */
 .background {
   mix-blend-mode: luminosity;
   display: flex;
@@ -131,4 +124,63 @@ button {
   width: .25rem;
   transform: translateX(-10px);
   background-color: rgba(79, 70, 229);
+}
+
+@media (max-width: 1024px) {
+    .fundo-menu {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navegacao {
+        padding: 1rem;
+    }
+
+    .fundo-menu {
+        width: 95%;
+        height: 6vh;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .menu {
+        justify-content: flex-start;
+        gap: 15px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-right: 10px;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu-link {
+        font-size: 0.85rem;
+    }
+
+    .bordinha {
+        height: 4vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        gap: 20px;
+    }
+
+    .menu-link {
+        font-size: 0.75rem;
+    }
+
+    .menu__icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .bordinha {
+        height: 3.5vh;
+        padding-right: 5px;
+    }
 }

@@ -16,7 +16,6 @@
 }
 
 .foto{
-    /* background-color: beige; */
     padding-top: 150px;
     min-height: 400px;
     display: flex;
@@ -58,4 +57,29 @@ h1{
     .cabecalho-sub-titulo {
         font-size: 1rem;
     }
+}
+.sobre{
+    padding: 6rem 2rem;
+}
+
+.sobre-titulo{
+    font-size: 3rem;
+    color: var(--primary-white);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sobre-caixa{
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza a Caixa do Texto */
+    border-radius: 16px;
+    border: 1px solid var(--primary-glass);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sobre-paragrafo{
+    text-align: center;
+    font-size: 1.2rem;
 }

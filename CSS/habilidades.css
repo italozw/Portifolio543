@@ -1,0 +1,55 @@
+.area-habilidades{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.sobre-titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-habilidades{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 80px;
+}
+
+.habilidade{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-glass);
+    width: 125px;
+    min-height: 140px;
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transform: translateY(-10px) scale(1.03);
+    gap: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.habilidade i {
+    font-size: 3rem;
+    color: var(--cor);
+}
+
+.habilidade:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+.color-span{
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="JS/particulas.js" defer></script>
+    <script src="JS/forms.js" defer></script>
 </head>
 
 <body>
@@ -33,41 +34,37 @@
 
     <header class="navegacao">
         <nav class="fundo-menu">
-                <ul class="menu">
-                    <li>
-                        <a href="#inicio" class="menu-link">Início</a>
-                    </li>
-                    <li>
-                        <a href="#sobre" class="menu-link">Sobre</a>
-                    </li>
-                    <li>
-                        <a href="#habilidades" class="menu-link">habilidades</a>
-                    </li>
-                    <li>
-                        <a href="#projetos" class="menu-link">Projetos</a>
-                    </li>
-                    <li>
-                        <a href="#contato" class="menu-link">Contato</a>
-                    </li>
-                </ul>
-                <div class="background">
-                    <div class="bordinha"></div>
-                    <button class="menu__icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+
+            <ul class="menu">
+                <li><a href="#inicio" class="menu-link">Início</a></li>
+                <li><a href="#sobre" class="menu-link">Sobre</a></li>
+                <li><a href="#habilidades" class="menu-link">Habilidades</a></li>
+                <li><a href="#formacao" class="menu-link">Formação</a></li>
+                <li><a href="#projetos" class="menu-link">Projetos</a></li>
+                <li><a href="#contato" class="menu-link">Contato</a></li>
+            </ul>
+
+            <div class="background">
+                <div class="bordinha"></div>
+
+                <button class="menu__icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                </div>
-         </nav>
+
+            </div>
+
+        </nav>
     </header>
     
     <main id="inicio" class="cabecalho">
-        <!-- <img src="IMG/Ftoto-perfil.jpg" alt="foto_perfil" class="foto-perfil"> -->
         <h1>Italo Luan de Almeida</h1>
         <p class="cabecalho-sub-titulo">Desenvolvedor Full Stack</p>
     </main>
 
     <section id="foto" class="foto">
+        <div class="caixa-foto"></div>
         <img src="IMG/Ftoto-perfil.jpg" alt="foto_perfil" class="foto-perfil">
     </section>
     
@@ -75,20 +72,65 @@
         <h2 class="sobre-titulo">Sobre Mim</h2>
         <div class="sobre-caixa">
             <p class="sobre-paragrafo">
-                Sou Estudante de Engenharia de Software - Unigran Capital | Estudante em Tecnico em Desenvolvimento de Sistemas - Senac Hub MS
+                Estudante de Engenharia de Software motivado em fugir do comum, desenvolvendo soluções que tornam a tecnologia mais atraente e fácil de usar. Sempre buscando inovar na forma como as pessoas interagem com o digital. Meu objetivo é sempre aprender e construir experiências que marquem quem as utiliza.
             </p>
         </div>
     </section>
 
-    <!-- <section id="habilidades" class="habilidades">
+    <section id="habilidades" class="area-habilidades">
         <h2 class="sobre-titulo">Habilidades</h2>
-        <div class="caixa-habilidades">
-            <a href="" class="icon-habilidades"><i class="fa-brands fa-html5"></i></a>
-            <p class="sobre-habilidades">
-                HTML
-            </p>
-        </div> -->
+        <div class="card-habilidades">
+            <div class="habilidade" style="--cor:#e34f26;">
+                <p>HTML</p>
+                <i class="fa-brands fa-html5"></i>
+                <span class="color-span">43%</span>
+            </div>
+            <div class="habilidade" style="--cor:#3776AB;;">
+                <p>Python</p>
+                <i class="fa-brands fa-python"></i>
+                <span class="color-span">31%</span>
+            </div>
+            <div class="habilidade" style="--cor:#f7df1e;">
+                <p>JavaScript</p>
+                <i class="fa-brands fa-js"></i>
+                <span class="color-span">23%</span>
+            </div>
+            <div class="habilidade" style="--cor:#af9b95;">
+                <p>SQL</p>
+                <i class="fa-solid fa-database"></i>
+                <span class="color-span">9%</span>
+            </div>
+            <div class="habilidade" style="--cor:#000000;">
+                <p>GitHub</p>
+                <i class="fa-brands fa-github"></i>
+                <span class="color-span">24%</span>
+            </div>
+        </div>
+    </section>
 
+    <section id="formacao" class="formacao-academica">
+        <h2 class="sobre-titulo">Formação</h2>
+        <div class="card-formacao">
+            <div class="formacao">
+                <span class="curso">Engenharia de Software</span>
+                <span class="instituicao">Unigran Capital 🎓</span>
+                <span class="status">56% - curso em andamento</span>
+            </div>
+        </div>
+        <div class="card-formacao">
+            <div class="formacao">
+                <span class="curso">Fábrica de Software</span>
+                <span class="instituicao">Senac Hub Academy 🎓</span>
+                <span class="status">42% - curso em andamento</span>
+            </div>
+        </div>
+        <div class="card-formacao">
+            <div class="formacao">
+                <span class="curso">Educação Especial</span>
+                <span class="instituicao">SóEducador 🎓</span>
+                <span class="status">100% - Finalizado</span>
+            </div>
+        </div>
     </section>
 
     <section id="projetos" class="projetos">
@@ -100,6 +142,10 @@
                 <div class="caixa-textos-projeto">
                     <h3 class="info-projetos">Site Hamburgueria</h3>
                     <p class="paragrafo-projetos">Site estilo Ecommerce de Hamburgueria gourmet</p>
+                    <a href="https://github.com/italozw/Site-Sushi" target="_blank" class="botao-github">
+                        Ver no GitHub
+                    </a>
+                    <i class="fa-brands fa-github"></i>
                 </div>
             </div>
 
@@ -116,6 +162,10 @@
                 <div class="caixa-textos-projeto">
                     <h3 class="info-projetos">Sistema da ParktecCG</h3>
                     <p class="paragrafo-projetos">Sistema Web para Gerenciamento de Startups e Mentores</p>
+                    <a href="https://www.figma.com/proto/sas3H1AvEXKwBKPjZ7aBw4/ParkTecCG---SGR?node-id=7605-11661&t=FtkQ3wX9XVAuiGYZ-1&scaling=min-zoom&content-scaling=fixed&page-id=409%3A195&starting-point-node-id=7605%3A11661&show-proto-sidebar=1" target="_blank" class="botao-github">
+                        Ver no Figma
+                    </a>
+                    <i class="fa-brands fa-figma"></i>
                 </div>
             </div>
 
@@ -124,6 +174,10 @@
                 <div class="caixa-textos-projeto">
                     <h3 class="info-projetos">Site Sushi</h3>
                     <p class="paragrafo-projetos">Site estilo Ecommerce de Sushi e culinária oriental</p>
+                    <a href="https://github.com/italozw/Site-Sushi" target="_blank" class="botao-github">
+                        Ver no GitHub
+                    </a>
+                    <i class="fa-brands fa-github"></i>
                 </div>
             </div>
 
@@ -151,27 +205,6 @@
             <a href="https://github.com/italozw" class="icon"><i class="fa-brands fa-github"></i></a>
         </ul>
     </div>
-
-    <script>
-        function enviarWhats(event){
-            event.preventDefault()
-
-            const nome = document.getElementById('nome').value;
-            const mensagem = document.getElementById('mensagem').value;
-            const telefone = '5567999435703';
-
-            const texto = `Olá Me chamo ${nome}, ${mensagem}`
-            const msgFormatada = encodeURIComponent(texto)
-
-            const url = `https://wa.me/${telefone}?text=${msgFormatada}`
-
-            console.log(url)
-
-            window.open(url, '_blank')
-
-        }
-
-    </script>
 
 </body>
 </html>
