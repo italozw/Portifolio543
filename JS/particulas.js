@@ -1,18 +1,15 @@
-// Canvas setup
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 let width = (canvas.width = window.innerWidth);
 let height = (canvas.height = window.innerHeight);
 
-// Particle system variables
 let particles = [];
-let targetParticleCount = 80;
-let connectionDistance = 120;
+let targetParticleCount = 30; 
+let connectionDistance = 150; 
 let mouse = { x: null, y: null, radius: 150 };
-let ripples = [];
+let ripples = []; 
 let particlesToRemove = 0;
 
-// Particle class
 class Particle {
   constructor() {
     this.x = Math.random() * width;
@@ -21,28 +18,25 @@ class Particle {
     this.speedX = Math.random() * 2 - 1;
     this.speedY = Math.random() * 2 - 1;
     this.color = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`;
-    this.opacity = 0; // Start with 0 opacity for fade-in effect
+    this.opacity = 0;
     this.targetOpacity = 1;
     this.fadingOut = false;
   }
 
   update() {
-    // Move particle
     this.x += this.speedX;
     this.y += this.speedY;
 
-    // Bounce off edges
-    if (this.x < 0 || this.x > width) this.speedX *= -1;
+    if (this.x < 0 || this.x > width) this.speedX *= -1; 
     if (this.y < 0 || this.y > height) this.speedY *= -1;
 
-    // Mouse interaction
+      // && = E || = ou
     if (mouse.x != null && mouse.y != null) {
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < mouse.radius) {
-        // Repel particles from mouse
         const force = (mouse.radius - distance) / mouse.radius;
         const angle = Math.atan2(dy, dx);
         const moveX = Math.cos(angle) * force * 5;
@@ -53,7 +47,6 @@ class Particle {
       }
     }
 
-    // Handle opacity transitions
     if (this.opacity < this.targetOpacity) {
       this.opacity += 0.02;
     } else if (this.opacity > this.targetOpacity) {
@@ -67,22 +60,20 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
-    ctx.globalAlpha = 1; // Reset alpha
+    ctx.globalAlpha = 1;
   }
 
-  // Method to start fading out the particle
   startFadeOut() {
     this.targetOpacity = 0;
     this.fadingOut = true;
   }
 
-  // Check if particle is completely faded out
   isFadedOut() {
     return this.fadingOut && this.opacity <= 0;
   }
 }
 
-// Ripple class for click effects
+// Click do mouse para efeito
 class Ripple {
   constructor(x, y) {
     this.x = x;
