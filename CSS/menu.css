@@ -6,7 +6,12 @@
     width: 100%;
     z-index: 100;
     padding: 1.5rem;
-
+}
+@media (max-width: 768px) {
+    .navegacao {
+      display: flex;
+      flex-direction: column;
+    }
 }
 .fundo-menu{
     display: flex;
@@ -47,8 +52,12 @@
 }
 @media (max-width: 768px) {
     .menu-link {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
+}
+
+.mobile-menu, .mobile-btn{
+    display: none;
 }
 
 .menu-link::after {
@@ -82,6 +91,7 @@ button {
 @media (max-width: 768px) {
     .bordinha {
         height: 5vh;
+        padding-right: 5px;
     }
 }
 .background {
@@ -109,6 +119,13 @@ button {
   transition: width .4s, transform .4s, background-color .4s;
 }
 
+@media (max-width: 768px) {
+    .menu__icon {
+      width: 22px;
+      height: 22px;
+    }
+}
+
 .menu__icon :nth-child(2) {
   width: 75%;
 }
@@ -126,4 +143,3 @@ button {
   transform: translateX(-10px);
   background-color: rgba(79, 70, 229);
 }
-
