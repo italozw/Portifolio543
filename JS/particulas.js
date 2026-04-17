@@ -17,7 +17,7 @@ class Particle {
     this.size = Math.random() * 3 + 1;
     this.speedX = Math.random() * 2 - 1;
     this.speedY = Math.random() * 2 - 1;
-    this.color = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`;
+    this.color = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`; 
     this.opacity = 0;
     this.targetOpacity = 1;
     this.fadingOut = false;
@@ -72,15 +72,13 @@ class Particle {
     return this.fadingOut && this.opacity <= 0;
   }
 }
-
-// Click do mouse para efeito
 class Ripple {
   constructor(x, y) {
     this.x = x;
     this.y = y;
     this.size = 0;
     this.maxSize = 100;
-    this.speed = 3;
+    this.speed = 1.5;
     this.opacity = 0.7;
   }
 
@@ -95,14 +93,13 @@ class Ripple {
 
   draw() {
     ctx.strokeStyle = `rgba(79, 172, 254, ${this.opacity})`;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.stroke();
   }
 }
 
-// Initialize particles
 function initParticles() {
   particles = [];
   for (let i = 0; i < targetParticleCount; i++) {
@@ -110,7 +107,6 @@ function initParticles() {
   }
 }
 
-// Connect particles with lines
 function connectParticles() {
   for (let a = 0; a < particles.length; a++) {
     for (let b = a; b < particles.length; b++) {
@@ -131,21 +127,15 @@ function connectParticles() {
   }
 }
 
-// Animation loop
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
-  // Handle particle count adjustments
   if (particles.length < targetParticleCount) {
-    // Add a new particle
     particles.push(new Particle());
   } else if (particles.length > targetParticleCount) {
-    // Start fading out particles to remove
     if (particlesToRemove === 0) {
       particlesToRemove = particles.length - targetParticleCount;
     }
-
-    // Mark particles for removal (up to 3 per frame)
     let marked = 0;
     for (
       let i = 0;
@@ -160,28 +150,22 @@ function animate() {
     }
   }
 
-  // Remove particles that have completely faded out
   for (let i = particles.length - 1; i >= 0; i--) {
     if (particles[i].isFadedOut()) {
       particles.splice(i, 1);
     }
   }
 
-  // Update and draw particles
   for (let i = 0; i < particles.length; i++) {
     particles[i].update();
     particles[i].draw();
   }
 
-  // Connect particles
   connectParticles();
-
-  // Update and draw ripples
   for (let i = 0; i < ripples.length; i++) {
     ripples[i].update();
     ripples[i].draw();
 
-    // Remove faded ripples
     if (ripples[i].opacity <= 0) {
       ripples.splice(i, 1);
       i--;
@@ -191,7 +175,6 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-// Event listeners
 window.addEventListener("resize", () => {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
@@ -212,7 +195,6 @@ window.addEventListener("click", (e) => {
   ripples.push(new Ripple(e.x, e.y));
 });
 
-// Control panel
 const particleCountSlider = document.getElementById("particleCount");
 const particleCountValue = document.getElementById("particleCountValue");
 const connectionDistanceSlider = document.getElementById("connectionDistance");
@@ -224,7 +206,6 @@ particleCountSlider.addEventListener("input", (e) => {
   targetParticleCount = parseInt(e.target.value);
   particleCountValue.textContent = targetParticleCount;
 
-  // Reset particlesToRemove when target changes
   if (particles.length > targetParticleCount) {
     particlesToRemove = particles.length - targetParticleCount;
   } else {
@@ -237,6 +218,5 @@ connectionDistanceSlider.addEventListener("input", (e) => {
   connectionDistanceValue.textContent = connectionDistance;
 });
 
-// Initialize and start animation
 initParticles();
 animate();
